@@ -1,0 +1,357 @@
+@import url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSans.css');
+
+/* CSS 변수 설정: 다른 페이지와 통일 */
+:root {
+  --main-bg-color: #121212; /* 더 어두운 배경 */
+  --card-bg-color: #1a1a1a;
+  --card-border-color: #333;
+  --text-color-primary: #eee;
+  --text-color-secondary: #bbb;
+  --accent-gold: #caa56d; /* 황금색 */
+  --accent-gold-light: #ffd58a; /* 밝은 황금색 */
+  --accent-red: #f74d2fe1; /* 타이틀용 레드 */
+  --highlight-red: #cc0000; /* 더 진한 강조 레드 */
+}
+
+/* 전체 다크 테마 */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--main-bg-color); /* 변수 사용 */
+  font-family: 'GmarketSans', sans-serif;
+  color: var(--text-color-primary); /* 변수 사용 */
+}
+
+.home-container {
+  background-color: var(--main-bg-color); /* 변수 사용 */
+  padding-bottom: 100px; /* 푸터와의 간격 */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* 컨테이너 그림자 */
+  border-radius: 10px; /* 컨테이너 모서리 둥글게 */
+  max-width: 1400px; /* 전체 최대 너비 조정 (선택 사항) */
+  margin: 0 auto; /* 중앙 정렬 */
+}
+
+/* Hero 섹션 */
+.hero-section {
+  height: 600px; /* 높이 약간 증가 */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative; /* 오버레이를 위한 relative */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  /* border-bottom: 1px solid #333; /* 아래 테두리 유지 또는 제거 */
+  box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.5); /* 내부 그림자로 깊이감 */
+}
+
+.hero-overlay { /* 배경 이미지 위에 어두운 오버레이 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 검정색 50% 투명도 오버레이 */
+  display: flex; /* 내부 콘텐츠 정렬을 위해 flex 사용 */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.main-title {
+  font-size: 5.5em; /* 글자 크기 더 키움 */
+  font-weight: 800; /* 더 굵게 */
+  color: var(--accent-red); /* 강조 레드 */
+  margin-bottom: 20px;
+  text-shadow: 0 0 15px rgba(247, 77, 47, 0.7); /* 제목 그림자 강조 */
+  letter-spacing: 2px;
+  animation: fadeInDown 1.5s ease-out; /* 애니메이션 추가 */
+}
+
+.subtitle-line { /* 기존 subtitle을 대체 */
+  font-size: 1.8em; /* 글자 크기 키움 */
+  color: var(--text-color-primary); /* 기본 텍스트 색상 */
+  font-style: normal; /* 이탤릭체 제거 (더 깔끔하게) */
+  margin: 8px 0; /* 간격 조정 */
+  opacity: 0; /* 초기에는 숨김 */
+  animation: fadeInUp 1.5s ease-out forwards; /* 애니메이션 추가 */
+}
+.subtitle-line:nth-child(2) { animation-delay: 0.5s; } /* 두 번째 줄 딜레이 */
+.subtitle-line:nth-child(3) { animation-delay: 1s; } /* 세 번째 줄 딜레이 */
+
+/* Hero 섹션 버튼 (필요시 주석 해제하여 사용) */
+/*
+.hero-button {
+    background-color: var(--accent-gold);
+    color: var(--main-bg-color);
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(202, 165, 109, 0.4);
+    animation: scaleIn 1.5s ease-out forwards;
+    animation-delay: 1.5s;
+    opacity: 0;
+}
+.hero-button:hover {
+    background-color: var(--accent-gold-light);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(202, 165, 109, 0.6);
+}
+*/
+
+/* 애니메이션 키프레임 */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+
+/* 소개 섹션 */
+.home-introduce {
+  display: flex;
+  flex-wrap: wrap; /* 요소들이 다음 줄로 넘어갈 수 있도록 */
+  gap: 80px; /* 간격 증가 */
+  justify-content: center;
+  align-items: center; /* 세로 중앙 정렬 */
+  padding: 100px 40px;
+  background-color: var(--main-bg-color);
+}
+
+.introduce-img-wrapper { /* 이미지 감싸는 div 스타일 */
+  flex-shrink: 0; /* 이미지가 줄어들지 않도록 */
+  width: 400px;
+  height: 400px; /* 정사각형으로 만들고 싶다면 */
+  border-radius: 50%; /* 원형 이미지 */
+  overflow: hidden; /* 원형으로 자르기 */
+  border: 5px solid var(--accent-gold); /* 황금색 테두리 */
+  box-shadow: 0 0 25px rgba(202, 165, 109, 0.5); /* 황금색 그림자 */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+.home-introduce-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 이미지가 원형 안에 꽉 차도록 */
+  display: block; /* 이미지 아래 기본 공백 제거 */
+}
+
+.introduce-img-wrapper:hover {
+  transform: scale(1.03); /* 호버 시 약간 확대 */
+  box-shadow: 0 0 40px rgba(202, 165, 109, 0.7); /* 호버 시 그림자 강조 */
+}
+
+
+.introduce-text-content { /* 텍스트 내용을 감싸는 div 스타일 */
+  max-width: 700px;
+  background-color: var(--card-bg-color); /* 배경색 */
+  border: 1px solid var(--card-border-color); /* 테두리 */
+  border-radius: 12px;
+  padding: 40px; /* 내부 패딩 */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* 그림자 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 텍스트 카드 왼쪽 테두리 그라데이션 (다른 페이지와 통일) */
+.introduce-text-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--accent-gold-light), var(--accent-gold), #8a6c40);
+  border-radius: 12px 0 0 12px;
+}
+
+.introduce-text-content:hover {
+    transform: translateY(-8px); /* 호버 시 위로 */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6); /* 그림자 강조 */
+}
+.introduce-text-content:hover::before {
+    background: linear-gradient(to bottom, var(--accent-gold), var(--accent-gold-light), #f0c242);
+}
+
+
+.introduce-text-content h2 {
+  font-size: 2.5em; /* 글자 크기 키움 */
+  margin-bottom: 15px;
+  color: var(--text-color-primary);
+  display: flex; /* 이름과 역할 정렬 */
+  align-items: baseline;
+  line-height: 1.2;
+}
+
+.introduce-text-content h2 strong {
+    font-weight: 800; /* 이름 더 굵게 */
+    color: var(--accent-gold-light); /* 이름에 황금색 강조 */
+    margin-right: 10px;
+}
+
+.role {
+  font-size: 0.7em; /* 역할 글자 크기 조정 (h2의 70%) */
+  color: var(--text-color-secondary);
+  font-weight: normal; /* 기본 굵기로 */
+}
+.accent-text { /* 강조 텍스트 클래스 */
+    color: var(--accent-red); /* 레드로 강조 */
+    font-weight: 700;
+}
+
+
+.description {
+  font-size: 1.1em; /* 글자 크기 키움 */
+  line-height: 1.8;
+  margin-bottom: 40px;
+  color: var(--text-color-secondary); /* 연한 회색 */
+}
+.description br { margin-bottom: 5px; } /* 줄바꿈 후 간격 */
+
+/* 정보 테이블 */ 
+.info-table {
+  width: 100%;
+  max-width: 700px;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 1.05em; /* 글자 크기 조정 */
+  color: var(--text-color-primary);
+  background-color: #2a2a2a; /* 테이블 배경색 */
+  border-radius: 8px; /* 테이블 모서리 둥글게 */
+  overflow: hidden; /* 모서리 둥글게 적용 */
+}
+
+.info-table tbody tr:last-child {
+    border-bottom: none; /* 마지막 줄에는 선 없음 */
+}
+
+
+.info-table th,
+.info-table td {
+  padding: 16px 20px; /* 패딩 증가 */
+  text-align: left;
+  border-bottom: 1px solid #3a3a3a; /* 선 색상 조정 */
+  vertical-align: top;
+}
+
+.info-table th {
+  width: 150px; /* 너비 조정 (내용에 따라 조절) */
+  font-weight: 600; /* 굵기 조정 */
+  color: var(--accent-gold); /* 황금색 강조 */
+  display: flex; /* 아이콘 정렬 위해 */
+  align-items: center;
+  gap: 8px; /* 아이콘과 텍스트 간격 */
+}
+
+.info-table .table-icon {
+    font-size: 1.1em; /* 아이콘 크기 */
+    color: var(--accent-gold-light); /* 아이콘 색상 */
+}
+
+.info-table td {
+  color: var(--text-color-secondary); /* 데이터 글자색 연하게 */
+}
+
+/* --- 반응형 디자인 --- */
+@media (max-width: 900px) {
+  .hero-section {
+    height: 450px; /* 모바일에서 높이 조정 */
+  }
+
+  .main-title {
+    font-size: 3.5em;
+  }
+
+  .subtitle-line {
+    font-size: 1.2em;
+  }
+
+  .home-introduce {
+    flex-direction: column; /* 세로로 쌓이도록 */
+    padding: 60px 20px;
+    gap: 40px; /* 간격 조정 */
+  }
+
+  .introduce-img-wrapper {
+    width: 280px; /* 모바일에서 이미지 크기 조정 */
+    height: 280px;
+    margin: 0 auto; /* 중앙 정렬 */
+  }
+
+  .introduce-text-content {
+    padding: 30px;
+  }
+
+  .introduce-text-content h2 {
+    font-size: 2em;
+    text-align: center; /* 모바일에서 제목 가운데 정렬 */
+    justify-content: center; /* 아이콘과 텍스트 가운데 정렬 */
+  }
+
+  .introduce-text-content h2 strong {
+      margin-right: 5px; /* 간격 조정 */
+  }
+
+  .role {
+    font-size: 0.8em; /* 모바일에서 역할 글자 크기 조정 */
+  }
+
+  .description {
+    font-size: 1em;
+    text-align: center; /* 모바일에서 설명 가운데 정렬 */
+    margin-bottom: 30px;
+  }
+
+  .info-table {
+    font-size: 0.9em;
+  }
+
+  .info-table th,
+  .info-table td {
+    padding: 12px 10px;
+    display: block; /* 모바일에서 th, td를 블록 요소로 만들어 한 줄에 하나씩 */
+    width: 100%; /* 너비 100% */
+    box-sizing: border-box; /* 패딩 포함 */
+    text-align: center; /* 가운데 정렬 */
+  }
+
+  .info-table th {
+    width: auto; /* 너비 자동 */
+    margin-bottom: 5px;
+    justify-content: center; /* 아이콘과 텍스트 가운데 정렬 */
+  }
+}
+
+@media (max-width: 500px) { /* 더 작은 모바일 화면 */
+    .main-title {
+        font-size: 2.8em;
+    }
+    .subtitle-line {
+        font-size: 1em;
+    }
+    .hero-section {
+        height: 350px;
+    }
+    .introduce-text-content h2 {
+        font-size: 1.8em;
+    }
+}

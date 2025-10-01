@@ -1,0 +1,228 @@
+@import url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSans.css');
+
+/* CSS 변수 설정: 색상 관리를 용이하게 */
+:root {
+  --main-bg-color: #121212;
+  --text-color-primary: #eee;
+  --text-color-secondary: #bbb;
+  --accent-gold: #caa56d; /* 기존 황금색 */
+  --accent-gold-light: #d6b782; /* 밝은 황금색 */
+  --accent-red: #f74d2fe1; /* 기존 레드 계열 (h2 타이틀용) */
+  --timeline-line-color: #333; /* 타임라인 선 색상 */
+  --timeline-dot-color: #caa56d; /* 타임라인 점 색상 */
+  --timeline-dot-shadow: rgba(202, 165, 109, 0.4);
+}
+
+.history-container {
+  background-color: var(--main-bg-color);
+  color: var(--text-color-primary);
+  font-family: 'GmarketSans', sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* 컨테이너에 은은한 그림자 추가 */
+  border-radius: 10px; /* 컨테이너 모서리 둥글게 */
+}
+
+.history-title {
+  font-size: 2.8em; /* 글자 크기 조정 */
+  text-align: center;
+  color: var(--accent-red); /* 타이틀 색상 유지 */
+  margin-bottom: 8px;
+  letter-spacing: 1.5px; /* 글자 간격 추가 */
+  display: flex; /* 아이콘과 텍스트 정렬 */
+  justify-content: center;
+  align-items: center;
+}
+
+.history-title .title-icon {
+  font-size: 1em; /* 아이콘 크기 (부모의 폰트 크기 따름) */
+  margin-right: 10px; /* 아이콘과 텍스트 사이 간격 */
+  color: var(--accent-gold); /* 아이콘 색상 황금색으로 변경 */
+}
+
+.history-subtitle {
+  text-align: center;
+  color: var(--text-color-secondary);
+  margin-bottom: 60px; /* 아래쪽 여백 증가 */
+  font-size: 1.1em;
+  letter-spacing: 0.5px;
+}
+
+/* 타임라인 리스트 */
+.career-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  /* ✨ 타임라인 라인 스타일 개선 ✨ */
+  border-left: 3px solid var(--timeline-line-color); /* 더 어두운 색상으로 변경 */
+  padding-left: 30px; /* 왼쪽 패딩 증가 */
+}
+
+/* 타임라인 라인에 미묘한 그라데이션 효과 (더욱 고급스럽게) */
+.career-list::before {
+  content: '';
+  position: absolute;
+  left: -1px; /* border-left와 겹치지 않게 미세 조정 */
+  top: 0;
+  width: 5px; /* 선 두께 살짝 조정 */
+  height: 100%;
+  background: linear-gradient(to bottom, var(--accent-gold-light), var(--accent-gold), var(--timeline-line-color));
+  opacity: 0.7; /* 약간 투명하게 */
+  pointer-events: none; /* 클릭 이벤트 방지 */
+}
+
+
+.career-item {
+  position: relative;
+  margin-bottom: 50px; /* 각 항목 아래 여백 */
+  padding-bottom: 15px; /* 내용 하단 여백 */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease; /* 호버 애니메이션 추가 */
+  background-color: #1c1c1c; /* 각 항목 배경색 추가 */
+  border-radius: 8px; /* 모서리 둥글게 */
+  padding: 25px; /* 내부 패딩 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* 그림자 추가 */
+  border: 1px solid #2a2a2a; /* 미세한 테두리 */
+}
+
+.career-item:hover {
+  transform: translateY(-5px); /* 호버 시 살짝 위로 */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); /* 그림자 강조 */
+}
+
+/* 마지막 항목은 아래 여백을 줄이고, 라인도 끝내기 위해 */
+.career-item.last-item {
+    margin-bottom: 0;
+    border-bottom: none; /* 필요시 마지막 항목 하단 선 제거 */
+}
+.career-item.last-item .timeline-dot {
+    /* 마지막 점에 대한 특별한 스타일 (예: 더 커지거나 다른 모양) */
+    background-color: var(--accent-gold-light);
+    box-shadow: 0 0 10px var(--accent-gold-light);
+}
+
+
+/* 타임라인 점 */
+.timeline-dot {
+  position: absolute;
+  left: -40px; /* 라인과의 위치 조정 (padding-left에 따라 조절) */
+  top: 5px; /* 내용 상단과 일치 */
+  width: 18px; /* 점 크기 키움 */
+  height: 18px;
+  background-color: var(--timeline-dot-color);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--timeline-dot-shadow); /* 그림자 강조 */
+  border: 2px solid #2a2a2a; /* 점 테두리 추가 */
+  z-index: 1; /* 내용 위에 오도록 */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.career-item:hover .timeline-dot {
+    background-color: var(--accent-gold-light); /* 호버 시 점 색상 변경 */
+    box-shadow: 0 0 15px var(--accent-gold-light), 0 0 20px rgba(255, 255, 255, 0.2); /* 점 그림자 더 강조 */
+}
+
+
+/* 연도 컨테이너 및 스타일 */
+.career-year-container {
+    position: absolute; /* 절대 위치 */
+    left: -100px; /* 타임라인 라인 왼쪽에 배치 */
+    top: 0px; /* dot과 같은 라인에 */
+    width: 60px; /* 연도 영역 너비 */
+    text-align: right; /* 연도 오른쪽 정렬 */
+    font-size: 1.3em; /* 연도 글자 크기 키움 */
+    font-weight: 800; /* 연도 글자 굵게 */
+    color: var(--accent-gold-light); /* 연도 색상 황금색으로 강조 */
+    letter-spacing: 0.5px;
+    padding-right: 10px; /* 점과의 간격 */
+}
+
+.career-content {
+  margin-left: 0; /* 내부 마진 제거 (li의 padding으로 간격 조절) */
+}
+
+.career-content h3 {
+  font-size: 1.5em; /* 제목 글자 크기 키움 */
+  color: var(--text-color-primary); /* 흰색 유지 */
+  margin: 0 0 8px; /* 상하 마진 조정 */
+  line-height: 1.4;
+  display: flex; /* 아이콘과 텍스트 정렬 */
+  align-items: center;
+}
+
+.career-content .career-icon {
+    font-size: 1.2em; /* 아이콘 크기 (제목보다 살짝 크게) */
+    margin-right: 12px; /* 아이콘과 텍스트 사이 간격 */
+    color: var(--accent-gold); /* 아이콘 색상 황금색으로 변경 */
+    line-height: 1; /* 줄 높이 조정 */
+}
+
+
+.career-content p {
+  font-size: 1em; /* 설명 글자 크기 조정 */
+  color: var(--text-color-secondary); /* 연한 회색 유지 */
+  margin: 0;
+  line-height: 1.6; /* 줄 간격 */
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .history-container {
+    padding: 60px 15px; /* 모바일에서 패딩 조정 */
+  }
+
+  .history-title {
+    font-size: 2.2em; /* 모바일에서 타이틀 크기 조정 */
+  }
+
+  .history-subtitle {
+    font-size: 1em; /* 모바일에서 서브타이틀 크기 조정 */
+    margin-bottom: 40px;
+  }
+
+  .career-list {
+    border-left: 2px solid var(--timeline-line-color); /* 선 두께 조정 */
+    padding-left: 20px; /* 패딩 조정 */
+  }
+
+  .career-list::before {
+    width: 3px; /* 모바일에서 선 두께 조정 */
+    left: -1px;
+  }
+
+  .career-item {
+    margin-left: 0; /* 모바일에서 왼쪽 마진 제거 */
+    padding: 20px 15px; /* 내부 패딩 조정 */
+    margin-bottom: 40px;
+  }
+
+  .timeline-dot {
+    left: -30px; /* 모바일에서 점 위치 조정 */
+    width: 14px;
+    height: 14px;
+  }
+
+  .career-year-container {
+    position: static; /* 모바일에서 연도 위치 변경 (내용 위로) */
+    width: auto;
+    text-align: left;
+    font-size: 1.1em;
+    padding-right: 0;
+    margin-bottom: 5px; /* 연도와 제목 사이 간격 */
+    color: var(--accent-gold); /* 연도 색상 강조 */
+  }
+
+  .career-content h3 {
+    font-size: 1.3em;
+  }
+
+  .career-content .career-icon {
+    font-size: 1em;
+    margin-right: 8px;
+  }
+
+  .career-content p {
+    font-size: 0.9em;
+  }
+}

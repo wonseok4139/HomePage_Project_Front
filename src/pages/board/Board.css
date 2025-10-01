@@ -1,0 +1,262 @@
+/* src/components/notice/Notice.css */
+/* Google Fonts - Noto Sans KR */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+.notice-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #2c2c2c;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+h2 {
+  text-align: center;
+  color: #f0f0f0;
+  margin-bottom: 25px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* 검색창 스타일 */
+.search-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.SearchBoard {
+  flex-grow: 1;
+  padding: 12px 15px;
+  border: 1px solid #444;
+  background-color: #383838;
+  color: #f0f0f0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.SearchBoard:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.SearchBoardButton {
+  padding: 12px 25px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.SearchBoardButton:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* 테이블 스타일 */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+th, td {
+  border: none;
+  padding: 15px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+thead {
+  background-color: #4a4a4a;
+  color: #fff;
+}
+
+tbody tr {
+  background-color: #383838;
+  transition: background-color 0.3s ease;
+}
+
+tbody tr:hover {
+  background-color: #424242;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #333;
+}
+
+.post-title-link {
+  cursor: pointer;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.post-title-link:hover {
+  color: #61dafb;
+  text-decoration: underline;
+}
+
+/* 게시글 내용 스타일 */
+.post-detail-container {
+  padding: 30px;
+  background-color: #2c2c2c;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.post-meta p {
+  margin: 0;
+  padding: 5px 0;
+  font-size: 14px;
+  color: #999;
+}
+
+.post-content {
+  margin-top: 20px;
+  padding: 20px 0;
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #444;
+  white-space: pre-wrap; /* 줄 바꿈 유지 */
+}
+
+/* 버튼 스타일 */
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.write-button, .edit-button, .delete-button, .cancel-button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.write-button {
+  background-color: #007bff;
+  color: white;
+}
+.write-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.edit-button {
+  background-color: #ffc107;
+  color: #2c2c2c;
+}
+.edit-button:hover {
+  background-color: #e0a800;
+  transform: translateY(-2px);
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+}
+.delete-button:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+}
+
+.cancel-button {
+  background-color: #6c757d;
+  color: white;
+}
+.cancel-button:hover {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+}
+
+/* 글쓰기/수정 폼 스타일 */
+.post-form-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 65px;
+  background-color: #2c2c2c;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: #f0f0f0;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #444;
+  background-color: #383838;
+  color: #f0f0f0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 150px;
+  
+}
+
+.submit-button {
+  padding: 15px 30px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-button:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+
+/* 로딩/오류 메시지 스타일 */
+.loading-message, .error-message {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 18px;
+  color: #ffc107;
+}
+

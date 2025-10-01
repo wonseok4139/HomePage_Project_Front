@@ -1,0 +1,234 @@
+
+.header-container {
+    background-color: #111;
+    padding: 0 20px;
+    font-family: 'GmarketSans', sans-serif;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* 고급스러운 그림자 효과 추가 */
+}
+
+.header-wrap {
+    max-width: 1400px;
+    height: 64px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* 로고와 메뉴/검색창을 양 끝으로 분리 */
+    align-items: center; /* 세로 중앙 정렬 */
+    /* flex-wrap: wrap; /* 필요한 경우 줄바꿈 허용 (데스크톱에서는 보통 한 줄 유지) */
+    /* min-height: 64px; /* 최소 높이를 보장하여 내용이 많아져도 너무 찌그러지지 않게 */
+}
+
+.header-left-wrap {
+    display: flex;
+    align-items: center;
+    /* flex-grow: 1; /* 이 부분이 남은 공간을 채우려 함 (문제의 소지) */
+    /* flex-shrink: 1; /* 축소 가능 */
+    /* flex-basis: auto; */
+}
+
+.header-logo img {
+    height: 60px;
+    object-fit: contain;
+}
+
+/* 메뉴 리스트 (.header-menu) */
+.header-menu {
+    display: flex; /* Flexbox 활성화 */
+    margin-left: 40px; /* 로고와의 간격 */
+    padding: 0;
+    list-style: none;
+    align-items: center; /* 메뉴 항목들을 세로 중앙 정렬 */
+    /* flex-wrap: nowrap; /* 기본적으로 줄바꿈 방지. 긴 내용이 있으면 넘치게 됨. */
+    /* flex-wrap: wrap; /* 만약 메뉴가 많아서 강제로 줄바꿈되게 하고 싶다면 이 속성 사용 */
+    gap: 20px; /* 각 li 요소 사이의 간격 */
+}
+
+.header-menu li {
+    /* margin-right: 16px; /* li 자체에 마진을 주면 깔끔합니다. */
+    /* flex-shrink: 0; /* 메뉴 항목이 줄어들지 않도록 (단, 넘칠 수 있음) */
+    white-space: nowrap; /* 메뉴 텍스트가 길어져도 한 줄로 유지 (로그인 후 이메일 등) */
+}
+
+/* 메뉴 링크 및 텍스트 항목 공통 스타일 */
+.header-nav-item {
+    color: #695252;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+    display: inline-block; /* span 등에도 패딩/마진이 잘 적용되도록 */
+    padding: 5px 0; /* 링크 자체의 상하 패딩 */
+}
+
+.header-nav-item:hover {
+    color: #f74d2fe1; /* 호버 시 색상 */
+}
+
+/* 로그인 후 사용자 이메일 표시 (긴 텍스트 처리) */
+.header-menu li span.header-nav-item { /* 사용자 이메일에만 적용 */
+    max-width: 180px; /* 이메일 주소의 최대 너비 설정 (넘치면 생략되게) */
+    overflow: hidden; /* 넘치는 내용 숨김 */
+    text-overflow: ellipsis; /* 넘치는 내용 ...으로 표시 */
+    display: inline-block; /* width, height, padding, margin이 적용되도록 */
+    vertical-align: middle; /* 다른 요소들과 세로 정렬 */
+    color: #b0b0b0; /* 이메일 글자색을 약간 흐리게 */
+    font-size: 0.95em; /* 이메일 글자 크기 살짝 작게 */
+    font-weight: normal; /* 기본 글꼴 굵기 (굵게 보일 필요는 없음) */
+    /* margin-left: 10px; /* 마이페이지와의 간격. li의 gap이 있으니 불필요할 수 있음 */
+}
+
+
+/* 검색창 */
+.header-search {
+    display: flex;
+    align-items: center; /* 세로 중앙 정렬 */
+    gap: 8px; /* input과 button 사이 간격 */
+    margin-left: 20px; /* 메뉴와의 간격 */
+}
+
+.header-search input {
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1px solid #666;
+    background-color: #1a1a1a;
+    color: #eee;
+    outline: none; /* 포커스 시 테두리 제거 */
+    flex-shrink: 1; /* 공간이 부족하면 줄어들 수 있도록 */
+    min-width: 120px; /* 검색창 최소 너비 (너무 줄어들지 않게) */
+}
+
+.header-search button {
+    padding: 6px 14px;
+    background-color: #f75a5a; /* 검색 버튼 색상 */
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.header-search button:hover {
+    background-color: #e05151; /* 호버 시 진하게 */
+}
+
+/* 햄버거 버튼 */
+.menu-toggle {
+    display: none; /* 기본적으로 숨김 */
+    font-size: 28px;
+    color: #b8b1b1bb;
+    background: none;
+    border: none;
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+/* --- 반응형 디자인 (햄버거 메뉴) --- */
+@media screen and (max-width: 1100px) {
+    .header-wrap {
+        flex-direction: column; /* 로고, 메뉴, 검색창을 세로로 쌓음 */
+        align-items: flex-start; /* 왼쪽 정렬 */
+        height: auto; /* 높이 자동 조절 */
+        padding: 10px 20px; /* 패딩 유지 */
+    }
+
+    .header-left-wrap {
+        width: 100%; /* 전체 너비 차지 */
+        justify-content: space-between; /* 로고와 햄버거 버튼 양 끝으로 */
+        margin-bottom: 10px; /* 아래 여백 */
+    }
+
+    .header-menu {
+        display: none; /* 햄버거 버튼이 닫혀있을 때 숨김 */
+        position: static; /* 절대 위치 해제 */
+        width: 100%; /* 전체 너비 차지 */
+        flex-direction: column; /* 메뉴 항목들을 세로로 쌓음 */
+        padding: 0; /* 내부 패딩 제거 */
+        margin-left: 0; /* 기본 마진 제거 */
+        align-items: flex-start; /* 왼쪽 정렬 */
+        gap: 0; /* 메뉴 항목 사이의 간격 제거 */
+        background-color: transparent; /* 배경색 투명하게 (토글 시 보이는 배경은 JS에서 처리) */
+    }
+
+    .header-menu.open {
+        display: flex; /* 'open' 클래스가 있을 때만 보이도록 */
+    }
+
+    .header-menu li {
+        width: 100%; /* 메뉴 항목이 전체 너비 차지 */
+        text-align: left; /* 텍스트 왼쪽 정렬 */
+        margin-right: 0; /* 기본 마진 제거 */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* 각 항목 아래 구분선 */
+    }
+
+    .header-menu li:last-child {
+        border-bottom: none; /* 마지막 항목 구분선 제거 */
+    }
+
+    .header-nav-item {
+        margin: 0; /* 모든 마진 제거 */
+        padding: 14px 0; /* 상하 패딩으로 클릭 영역 확보 */
+        display: block; /* 블록 요소로 만들어 너비 100% 차지 */
+        width: 100%; /* 전체 너비 차지 */
+    }
+    
+    /* 로그인 후 이메일 주소도 반응형에서 풀 너비 차지 */
+    .header-menu li span.header-nav-item {
+        max-width: none; /* 반응형에서는 최대 너비 제한 해제 */
+        overflow: visible; /* 넘치는 내용 숨김 해제 */
+        text-overflow: clip; /* 생략 표시 해제 */
+        white-space: normal; /* 필요시 줄바꿈 허용 */
+        padding: 14px 0;
+    }
+
+
+    .menu-toggle {
+        display: block; /* 햄버거 버튼 표시 */
+    }
+
+    .header-search {
+        width: 100%; /* 검색창도 전체 너비 차지 */
+        margin-top: 10px; /* 위 여백 */
+        margin-left: 0; /* 마진 제거 */
+        justify-content: center; /* 가운데 정렬 (필요시) */
+    }
+
+    .header-search input {
+        flex-grow: 1; /* 남은 공간 채우도록 */
+    }
+}
+
+
+/* 회원가입 메시지 (로그인 전) */
+.signup-message {
+    font-size: 0.85em; /* 글자 크기 조정 */
+    color: #f5484894; /* 톤 다운된 레드 */
+    white-space: nowrap; /* 줄바꿈 방지 */
+}
+.signup-message a {
+    color: #ec2c2cc4; /* 링크 색상 */
+    text-decoration: underline;
+    margin-left: 4px;
+    font-size: 1em; /* 부모 폰트 크기 따르도록 */
+    cursor: pointer;
+}
+.signup-message a:hover{
+    color: #f75a5a; /* 호버 시 색상 */
+}
+
+/* 로그아웃 버튼 스타일 (필요시 추가) */
+.logout-button {
+    /* Link 태그처럼 보이도록 스타일 통일 */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: color 0.2s ease;
+    color: #fff; /* 기본 글자색 */
+    padding: 5px 0;
+}
+
+.logout-button:hover {
+    color: #f74d2fe1; /* 호버 시 색상 */
+}

@@ -1,0 +1,184 @@
+@import url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSans.css');
+
+/* CSS 변수 설정 */
+:root {
+  --main-bg-color: #121212;
+  --card-bg-color: #1a1a1a;
+  --card-border-color: #333;
+  --text-color-primary: #eee;
+  --text-color-secondary: #bbb;
+  --accent-gold: #caa56d; /* 기존 황금색 */
+  --accent-gold-light: #ffd58a; /* 밝은 황금색 */
+  --accent-red: #f74d2fe1; /* 타이틀용 레드 */
+}
+
+.place-container {
+  background-color: var(--main-bg-color);
+  color: var(--text-color-primary);
+  font-family: 'GmarketSans', sans-serif;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 80px 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* 컨테이너 그림자 */
+  border-radius: 10px; /* 컨테이너 모서리 둥글게 */
+}
+
+.place-title {
+  font-size: 2.5em; /* 글자 크기 조정 */
+  text-align: center;
+  color: var(--accent-red);
+  margin-bottom: 8px;
+  letter-spacing: 1.5px;
+  display: flex; /* 아이콘과 텍스트 정렬 */
+  justify-content: center;
+  align-items: center;
+}
+
+.place-title .title-icon {
+  font-size: 1em; /* 아이콘 크기 */
+  margin-right: 10px;
+  color: var(--accent-gold); /* 아이콘 색상 황금색 */
+}
+
+.place-subtitle {
+  text-align: center;
+  color: var(--text-color-secondary);
+  font-size: 1.1em;
+  margin-bottom: 60px; /* 여백 증가 */
+  letter-spacing: 0.5px;
+}
+
+/* 정보 카드 목록 컨테이너 */
+.place-info {
+  display: grid; /* Flex 대신 Grid 사용 (더 유연한 레이아웃 가능) */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 280px 이상이면 자동으로 열 생성 */
+  gap: 30px; /* 카드 간격 */
+  margin-bottom: 50px; /* 아래 여백 */
+}
+
+/* 개별 정보 카드 */
+.place-card {
+  background-color: var(--card-bg-color);
+  border: 1px solid var(--card-border-color);
+  border-radius: 12px;
+  padding: 28px; /* 내부 패딩 증가 */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* 그림자 강조 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* 호버 애니메이션 */
+  position: relative;
+  overflow: hidden;
+}
+
+/* 카드 왼쪽 테두리 그라데이션 */
+.place-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--accent-gold-light), var(--accent-gold), #8a6c40);
+  border-radius: 12px 0 0 12px;
+  transition: background 0.3s ease;
+}
+
+.place-card:hover {
+  transform: translateY(-8px); /* 호버 시 위로 */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* 그림자 강조 */
+}
+
+.place-card:hover::before {
+  background: linear-gradient(to bottom, var(--accent-gold), var(--accent-gold-light), #f0c242);
+}
+
+.place-card h3 {
+  font-size: 1.4em; /* 제목 글자 크기 조정 */
+  color: var(--text-color-primary);
+  margin-bottom: 10px; /* 아래 여백 */
+  display: flex; /* 아이콘과 텍스트 정렬 */
+  align-items: center;
+  font-weight: 700;
+}
+
+.place-card .card-icon {
+  font-size: 1.2em; /* 아이콘 크기 */
+  margin-right: 10px;
+  color: var(--accent-gold-light); /* 아이콘 색상 황금색 */
+}
+
+.place-card p {
+  font-size: 1em; /* 설명 글자 크기 조정 */
+  color: var(--text-color-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* 지도 영역 */
+.map-wrapper {
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* 지도 그림자 강조 */
+  border: 1px solid var(--card-border-color); /* 지도 테두리 */
+}
+
+.map-wrapper iframe {
+  display: block; /* iframe 아래 공백 제거 */
+}
+
+.map-title { /* 지도 위에 추가된 제목 스타일 */
+  font-size: 1.8em;
+  color: var(--text-color-primary);
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 25px; /* 지도와의 간격 */
+  letter-spacing: 0.8px;
+  color: var(--accent-gold-light); /* 지도 제목 황금색 */
+}
+
+
+/* --- 반응형 디자인 --- */
+@media (max-width: 768px) {
+  .place-container {
+    padding: 60px 15px;
+  }
+
+  .place-title {
+    font-size: 2em;
+  }
+
+  .place-subtitle {
+    font-size: 1em;
+    margin-bottom: 40px;
+  }
+
+  .place-info {
+    grid-template-columns: 1fr; /* 모바일에서 한 열로 */
+    gap: 25px; /* 간격 조정 */
+  }
+
+  .place-card {
+    padding: 20px;
+  }
+
+  .place-card h3 {
+    font-size: 1.3em;
+  }
+
+  .place-card p {
+    font-size: 0.9em;
+  }
+
+  .timeline-dot {
+    width: 14px;
+    height: 14px;
+    left: -25px; /* 모바일에서 점 위치 조정 */
+  }
+
+  .map-wrapper iframe {
+    height: 350px; /* 모바일에서 지도 높이 조정 */
+  }
+
+  .map-title {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+  }
+}

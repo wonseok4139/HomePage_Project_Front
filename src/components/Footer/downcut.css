@@ -1,0 +1,55 @@
+.footer {
+  background-color: #1a1a1a;
+  color: #ccc;
+  font-size: 14px;
+  padding: 20px;
+  border-top: 1px solid #333;
+}
+
+
+.footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-column {
+  flex: 1 1 200px;
+  min-width: 160px;
+}
+
+.footer-column h4 {
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 8px;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.footer-column ul li:hover {
+  color: #fff;
+}
+
+/* 하단 저작권 바 */
+.footer-bottom {
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #333;
+}
