@@ -1,11 +1,11 @@
 import boardApi from './boardApi';
 
 // 게시글 목록 조회 또는 검색 (GET)
-export const getAllPosts = async (search = '') => {
+export const getAllPosts = async (title = '') => {
   try {
     const response = await boardApi.get('/getAllPosts', {
       params: {
-        search: search
+        title: title
       }
     });
     return response.data;

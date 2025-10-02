@@ -5,25 +5,26 @@ import './Board.css';
 import { useNavigate } from 'react-router-dom';
 import { getAllPosts } from '../../api/boardService'; 
 
-function Board() {
+const Board=()=> {
   const [posts, setPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
   // 게시글 목록을 가져오는 함수
-  const fetchPosts = async (search = '') => {
+  const fetchPosts = async (title = '') => {
     try {
-      const response = await getAllPosts(search);
+      const response = await getAllPosts(title);
       setPosts(response);
     } catch (error) {
       console.error('게시글을 가져오는 중 오류가 발생했습니다:', error);
     }
   };
-
   useEffect(() => {
-    fetchPosts(); // ✨ 초기 렌더링 시 빈 검색어로 목록을 가져옵니다.
-  }, []); // 의존성 배열을 빈 배열([ ])로 두어, 컴포넌트가 마운트될 때 한 번만 실행되게 합니다.
+    fetchPosts(searchTerm); 
+  }, [searchTerm]); 
+  console.log("==============="+searchTerm);
 
+// 게시판 찾기 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };

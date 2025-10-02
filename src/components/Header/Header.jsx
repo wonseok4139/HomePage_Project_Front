@@ -57,7 +57,7 @@ const Header = () => {
       '/reservation': ['예약', 'book', '예약하기', '예약좀', '예약 좀요'],
       '/video': ['영상', '비디오', '공연', '무대'],
       '/contact': ['연락', '문의', '전화', 'contact'],
-      '/board': ['질문', 'QnA'],
+      //'/board': ['질문', 'QnA'],
     };
 
     for (const path in routeKeywords) {
@@ -92,12 +92,13 @@ const Header = () => {
             <li><Link className="header-nav-item" to="/reservation">예약</Link></li>
             <li><Link className="header-nav-item" to="/video">영상</Link></li>
             <li><Link className="header-nav-item" to="/contact">연락</Link></li>
-            <li><Link className="header-nav-item" to="/board">게시판</Link></li>
+            {/* <li><Link className="header-nav-item" to="/board">게시판</Link></li> */}
 
             {/* user 객체에 값이 있으면(로그인 상태) 마이페이지/로그아웃 버튼을,
                 없으면(로그아웃 상태) 로그인/회원가입 버튼을 보여줍니다. */}
             {user ? (
               <>
+                <li><Link className="header-nav-item" to="/Board">게시판</Link></li>
                 <li><Link className="header-nav-item" to="/mypage">마이페이지</Link></li>
                 <li><button className="header-nav-item logout-btn" onClick={handleLogout}>로그아웃</button></li>
               </>
