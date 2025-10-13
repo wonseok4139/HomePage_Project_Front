@@ -17,6 +17,7 @@ const Board=()=> {
       setPosts(response);
     } catch (error) {
       console.error('게시글을 가져오는 중 오류가 발생했습니다:', error);
+      alert("회원정보를 불러오지 못했습니다ㅠㅠ")
     }
   };
   useEffect(() => {
